@@ -1,16 +1,18 @@
-<div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 h-full">
+<div
+    class="bg-white dark:bg-gray-900 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 h-full transition-colors duration-300">
     <div class="flex justify-between items-center mb-6">
-        <h2 class="text-xl font-semibold text-gray-800">Recent Expenses</h2>
+        <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Recent Expenses</h2>
 
         <div class="relative">
             <select [(ngModel)]="selectedCategory"
-                class="appearance-none bg-gray-50 border border-gray-200 text-gray-700 py-2 px-4 pr-8 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-200 focus:border-blue-500 text-sm">
+                class="appearance-none bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-200 py-2 px-4 pr-8 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-200 dark:focus:ring-blue-500/30 focus:border-blue-500 text-sm transition-colors">
                 <option value="All">All Categories</option>
                 @for (cat of categories; track cat) {
                 <option [value]="cat">{{ cat }}</option>
                 }
             </select>
-            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+            <div
+                class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 dark:text-gray-400">
                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                     <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
                 </svg>
@@ -20,28 +22,30 @@
 
     <div class="space-y-3 overflow-y-auto max-h-[500px] pr-2 custom-scrollbar">
         @if (filteredExpenses().length === 0) {
-        <div class="text-center py-10 text-gray-400">
+        <div class="text-center py-10 text-gray-400 dark:text-gray-500">
             <p>No expenses found.</p>
         </div>
         } @else {
         @for (expense of filteredExpenses(); track expense.id) {
         <div
-            class="flex items-center justify-between p-4 rounded-xl bg-gray-50 hover:bg-gray-100 transition-colors group">
+            class="flex items-center justify-between p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors group">
             <div class="flex items-center gap-4">
                 <div
-                    class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-lg">
+                    class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/20 flex items-center justify-center text-blue-600 dark:text-blue-400 font-bold text-lg">
                     {{ expense.category.charAt(0) }}
                 </div>
                 <div>
-                    <h3 class="font-medium text-gray-900">{{ expense.title }}</h3>
-                    <p class="text-xs text-gray-500">{{ expense.date | date:'mediumDate' }} • {{ expense.category }}</p>
+                    <h3 class="font-medium text-gray-900 dark:text-white">{{ expense.title }}</h3>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">{{ expense.date | date:'mediumDate' }} • {{
+                        expense.category }}</p>
                 </div>
             </div>
 
             <div class="flex items-center gap-4">
-                <span class="font-semibold text-gray-900">Rs. {{ expense.amount | number:'1.2-2' }}</span>
+                <span class="font-semibold text-gray-900 dark:text-white">Rs. {{ expense.amount | number:'1.2-2'
+                    }}</span>
                 <button (click)="deleteExpense(expense.id)"
-                    class="text-gray-400 hover:text-red-500 opacity-0 group-hover:opacity-100 transition-all p-1"
+                    class="text-gray-400 hover:text-red-500 dark:text-gray-500 dark:hover:text-red-400 opacity-0 group-hover:opacity-100 transition-all p-1"
                     title="Delete">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">

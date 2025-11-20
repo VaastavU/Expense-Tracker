@@ -3,6 +3,7 @@ import { DashboardComponent } from './components/dashboard/dashboard';
 import { AddExpenseComponent } from './components/add-expense/add-expense';
 import { ExpenseListComponent } from './components/expense-list/expense-list';
 import { BudgetSettingsComponent } from './components/budget-settings/budget-settings';
+import { ThemeToggleComponent } from './components/theme-toggle/theme-toggle';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,8 @@ import { BudgetSettingsComponent } from './components/budget-settings/budget-set
     DashboardComponent,
     AddExpenseComponent,
     ExpenseListComponent,
-    BudgetSettingsComponent
+    BudgetSettingsComponent,
+    ThemeToggleComponent
   ],
   templateUrl: './app.html',
   styleUrl: './app.css'
